@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { CitysController } from "../controllers/citys";
-
+import { CitiesController } from "../controllers/cities";
+import { createBodyValidator, createValidation } from "../controllers/cities/createCityController";
 export const router = Router();
 
-router.post("/citys", CitysController.create);
+router.post("/city", createBodyValidator, createValidation, CitiesController.create);
