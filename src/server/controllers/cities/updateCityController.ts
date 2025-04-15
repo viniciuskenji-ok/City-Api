@@ -2,14 +2,13 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
 import { validation } from "../../shared/middleware";
+import { ICity } from "../../database/models";
 
 
 interface IParamProps {
     id?: number,
 }
-interface IBodyProps { 
-    name: string,
-}
+interface IBodyProps extends Omit<ICity, "id"> {}
 
 export const updateValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
@@ -22,8 +21,6 @@ export const updateValidation = validation((getSchema) => ({
 
 export const update = async (req: Request<IParamProps, {}, IBodyProps>, res: Response): Promise<void> => {
     console.log(req.body);
-
-
 
     res.status(StatusCodes.ACCEPTED).json(req.body);
 }
