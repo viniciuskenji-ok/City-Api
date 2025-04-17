@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
 import { validation } from "../../shared/middleware";
+import { CitiesProvider } from "../../database/providers/cities";
 
 interface IQueryProps {
     page?: number;
@@ -19,7 +20,10 @@ export const getAllValidation = validation((getSchema) => ({
 
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response): Promise<void> => {
-    console.log(req.query);
-
-    res.status(StatusCodes.CREATED).json(req.query);
+    const result = await CitiesProvider.getAll(
+        req.query.page || 1,
+        req.query.limit || 10,
+        req.query.filter || ""
+    );
+    res.status(StatusCodes.OK).json(result);
 }

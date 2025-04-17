@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void>{
         .schema
         .createTable(ETableNames.city, table => {
             table.bigIncrements('id').primary().index();
-            table.string('name', 150).index().notNullable();
+            table.string('name', 150).checkLength("<=", 150).index().notNullable();
 
             table.comment('Tabela usada pra amarzenar as cidades');
         })
