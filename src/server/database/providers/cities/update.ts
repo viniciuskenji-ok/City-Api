@@ -7,7 +7,7 @@ export const update = async (id:number, city: Omit<ICity, 'id'>) : Promise<void 
     try {
         const result = await Knex(ETableNames.city)
         .update(city)
-        .where('id', '=', id);
+        .where("id", "=", id);
 
         if(result > 0) return;
 

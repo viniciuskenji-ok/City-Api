@@ -1,5 +1,5 @@
 export interface IStreet {
     id: number;
-    name: string;
+    streetName: string;
     cityId: number;
 }

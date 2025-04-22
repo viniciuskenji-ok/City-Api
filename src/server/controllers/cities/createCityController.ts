@@ -4,10 +4,9 @@ import * as yup from "yup";
 import { validation } from "../../shared/middleware";
 import { ICity } from "../../database/models";
 import { CitiesProvider } from "../../database/providers/cities";
-import { error } from "console";
 
 
-interface IBodyProps extends Omit<ICity, "id"> {}
+interface IBodyProps extends Omit<ICity, "id"> {};
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
