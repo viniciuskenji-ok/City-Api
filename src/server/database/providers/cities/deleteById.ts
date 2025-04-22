@@ -1,7 +1,5 @@
 import { Knex } from "../../knex"
 import { ETableNames } from "../../ETableNames"
-import { StatusCodes } from "http-status-codes";
-import { CitiesProvider } from ".";
 
 export const deleteById = async (id: number): Promise<void | Error> => {
     try {
