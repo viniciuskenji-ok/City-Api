@@ -2,6 +2,13 @@ import { Knex } from "../../knex"
 import { ETableNames } from "../../ETableNames"
 import { ICity } from "../../models";
 
+interface ICityResponse {
+    streets?: {
+        id: number;
+        streetName: string;
+    }
+}
+
 
 export const getAll = async(page: number, limit: number, filter: string): Promise<ICity[] | Error> => {
     try {
@@ -12,7 +19,18 @@ export const getAll = async(page: number, limit: number, filter: string): Promis
         .limit(limit);
         
         
-        return result;
+        const citiesStreets = await Promise.all(result.map(async (city) => {
+            const streets = await Knex(ETableNames.street)
+            .select(["id", "streetName"])
+            .where("cityId", "=", city.id);
+
+            return {
+                ...city,
+                streets
+            };
+        }));
+
+        return citiesStreets;
     } catch (error) {
 
         console.log(error)
