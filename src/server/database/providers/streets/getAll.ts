@@ -8,7 +8,7 @@ export const getAll = async (page: number, limit: number, p0: string, p1: number
                 `${ETableNames.street}.id`,
                 `${ETableNames.street}.streetName`,
                 `${ETableNames.street}.cityId`,
-                `${ETableNames.city}.name as cityName` 
+                `${ETableNames.city}.name as cityName`
             ])
             .join(
                 ETableNames.city,
