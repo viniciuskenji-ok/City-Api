@@ -9,6 +9,7 @@ import { StreetController } from "../controllers/streets";
 import { createStreetValidation } from "../controllers/streets/createStreetController";
 import { getAllStreetValidation } from "../controllers/streets/getAllStreetController";
 import { getByIdStreetValidation } from "../controllers/streets/getStreetByIdController";
+import { deleteStreetByIValidation } from "../controllers/streets/deleteStreetByIdController";
 export const router = Router();
 
 router.post("/city", createValidation, CitiesController.create);
@@ -21,3 +22,4 @@ router.put("/city/:id", updateValidation, CitiesController.update);
 router.post("/street", createStreetValidation, StreetController.create);
 router.get("/street", getAllStreetValidation, StreetController.getAll);
 router.get("/street/:id", getByIdStreetValidation, StreetController.getById);
+router.delete("/street/:id", deleteStreetByIValidation, StreetController.deleteById);
