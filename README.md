@@ -81,7 +81,3 @@ yarn dev
 ## Estrutura do Projeto
 
 O projeto segue uma arquitetura organizada em controladores, provedores de dados e rotas, facilitando a manutenção e expansão do código.
-
-## Licença
-
-MIT
