@@ -2,6 +2,7 @@ import { create } from "./createStreetController";
 import { deleteById } from "./deleteStreetByIdController";
 import { getAll } from "./getAllStreetController";
 import { getById } from "./getStreetByIdController";
+import { update } from "./updateStreetController";
 
 
 export const StreetController = {
@@ -9,4 +10,5 @@ export const StreetController = {
     getAll,
     getById,
     deleteById,
+    update,
 }
