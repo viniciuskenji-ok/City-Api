@@ -15,6 +15,7 @@ export const getAllValidation = validation((getSchema) => ({
         page: yup.number().optional().moreThan(0),
         limit: yup.number().optional().moreThan(0),
         filter: yup.string().optional(),
+
     })),
 }));    
 
@@ -23,7 +24,8 @@ export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Respons
     const result = await CitiesProvider.getAll(
         req.query.page || 1,
         req.query.limit || 10,
-        req.query.filter || ""
+        req.query.filter || "",
+
     );
     res.status(StatusCodes.OK).json(result);
 }
