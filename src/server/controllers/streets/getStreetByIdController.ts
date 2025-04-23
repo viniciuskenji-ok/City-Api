@@ -1,4 +1,3 @@
-import { get } from "http";
 import { validation } from "../../shared/middleware";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
@@ -14,3 +13,19 @@ export const getByIdStreetValidation = validation(getSchema => ({
         id: yup.number().integer().required().moreThan(0),
     })),
 }));
+
+
+export const getById = async (req: Request<IParamsProps>, res: Response): Promise<void> => {
+    const result = await StreetsProvider.getById(req.params.id!);
+
+    if(result instanceof Error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            error: {
+                default: result.message,
+            }
+        });
+    }
+
+
+    res.status(StatusCodes.OK).json(result);
+}

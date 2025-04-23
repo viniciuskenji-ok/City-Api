@@ -26,5 +26,5 @@ export const getById = async (req: Request<IParamsProps>, res: Response): Promis
         });
     }
 
-    res.status(StatusCodes.ACCEPTED).json(result);  
+    res.status(StatusCodes.OK).json(result);  
 }
