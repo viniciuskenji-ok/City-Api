@@ -2,13 +2,6 @@ import { Knex } from "../../knex"
 import { ETableNames } from "../../ETableNames"
 import { ICity } from "../../models";
 
-interface ICityResponse {
-    streets?: {
-        id: number;
-        streetName: string;
-    }
-}
-
 
 export const getAll = async(page: number, limit: number, filter: string): Promise<ICity[] | Error> => {
     try {
